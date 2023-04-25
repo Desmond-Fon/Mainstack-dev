@@ -1,7 +1,7 @@
 export const SideNav = () => {
   return (
     <>
-      <div className="flex justify-start pt-[32px] flex-col gap-[44px] font-bold">
+      <div className="flex justify-start pt-[32px] flex-col gap-[44px] font-bold border-r-[1px] border-[#EFF1F6]">
         <div className="w-[40px] h-[40px] flex justify-center items-center ml-[54px]">
           <button>
             <img
@@ -23,7 +23,7 @@ export const SideNav = () => {
                       alt=""
                     />
                   </div>
-                  <p>Dashboard</p>
+                  <p className="text-[#FF5403]">Dashboard</p>
                 </div>
               </div>
             </button>
