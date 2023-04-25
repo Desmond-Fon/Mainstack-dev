@@ -15,7 +15,7 @@ export const Content = () => {
         console.log(response);
         setChartData(response.data);
       });
-  }, []);
+  }, [setChartData]);
 
   console.log(chartData);
 
