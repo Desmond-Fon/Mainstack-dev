@@ -1,118 +1,200 @@
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
+// import axios from "axios";
+// import { useCallback, useEffect, useMemo } from "react";
+// import { DataContext } from "../context/data";
 
-
-// import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-// import { Doughnut } from "react-chartjs-2";
-
-// ChartJS.register(ArcElement, Tooltip, Legend);
-import { VictoryChart, VictoryStack, VictoryGroup, VictoryArea, VictoryPortal, VictoryScatter, VictoryAxis } from 'victory';
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const ReferralPie = () => {
-//   const data = {
-//     datasets: [
-//       {
-//         data: [60, 20, 50],
-//         backgroundColor: ["#FD7F0B", "#5D5FEF", "#242636"],
-//         cutoutPercentage: 80,
-//         borderWidth: [0, 0, 0],
-//       },
-//     ],
-//   };
+  // const { chartData } = useContext(DataContext);
+  // const [location, setLocation] = useState([]);
+
+  // const getLocation =  () => {
+  //   // const users = await axios.get("https://fe-task-api.mainstack.io/");
+  //   // console.log(users);
+  //   // setLocation(users.data);
+
+  //   axios({
+  //     method: "get",
+  //     url: "https://fe-task-api.mainstack.io/",
+  //     // data: JSON.stringify(data), // <- You add the data to the body here
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json",
+  //     },
+  //   })
+  //     .then((response) => {
+  //       console.log(("response", response))
+  //       setLocation(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log("error message: ", error.message);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   console.log('helloo');
+  // } ,[])
+
+  // const location = useCallback(() => {
+  //   axios({
+  //     method: "get",
+  //     url: "https://fe-task-api.mainstack.io/",
+  //     // data: JSON.stringify(data), // <- You add the data to the body here
+  //     // headers: {
+  //     //   "Content-Type": "application/json",
+  //     //   Accept: "application/json",
+  //     // },
+  //   })
+  //     .then((response) => {
+  //       // console.log(("response", response))
+  //       // console.log(response.data);
+  //       // setLocation(response.data);
+  //       return response.data;
+  //     })
+  //     .catch((error) => {
+  //       console.log("error message: ", error.message);
+  //     })
+  //   // getLocation() ?? []
+  //   // fetch("https://fe-task-api.mainstack.io/")
+  //   //   .then((res) => res.json())
+  //   //   .then((data) => setLocation(data.top_locations));
+
+  // }, []);
+
+  // console.log(location);
+  // console.log(location.graph_data);
+
+  // console.log(chartData);
+  // const first = location.top_locations[0].count
+  // const second = location.top_locations[1].count
+  // const third = location.top_locations[2].count
+  // const forth = location.top_locations[3].count
+  // const five = location.top_locations[5].count
+  // const data = {
+  //   // datasets: [
+  //   //   {
+  //   //     data: [7, 34, 7, 23, 34],
+  //   //     backgroundColor: ["#FD7F0B", "#5D5FEF", "#242636", "#242636", "#242636"],
+  //   //     // cutoutPercentage: 80,
+  //   //     // borderWidth: [0, 0, 0, 0, 0],
+  //   //   },
+  //   // ],
+  // };
+
+  if (location === undefined) {
+    return <>Still loading...</>;
+  }
+
   return (
-<div>                
-                <div className="chart-areea">
-                    <div className="victory-chart">
-                        <svg style={{ height: 0 }}>
-                            <defs>
-                                <linearGradient id="myGradient">
-                                    <stop offset="0%" stopColor="rgba(255, 84, 3, 0.2)" />
-                                    <stop offset="100%" stopColor="rgba(255, 84, 3, 0)" />
-                                    {/* <stop offset="50%" stopColor="gold" />
-                                    <stop offset="75%" stopColor="yellow" />
-                                    <stop offset="100%" stopColor="green" /> */}
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                        <VictoryChart
-                            scale={{ x: "time" }} width={400} height={300}>
-                            <VictoryStack colorScale={["#005aff50"]}>
-                                <VictoryGroup
-                                    data={[
-                                        { x: new Date(1986, 1, 1), y: 0 },
-                                        { x: new Date(1996, 1, 1), y: 4 },
-                                        { x: new Date(2006, 1, 1), y: 1 },
-                                        { x: new Date(2016, 1, 1), y: 0 }
-                                    ]}
-                                >
-                                    <VictoryArea
-                                        style={{
-                                            data: { fill: "url(#myGradient)", stroke: '#FF5403', strokeWidth: 2 }
-                                        }}
-                                        // interpolation="natural"
-                                    />
-                                    <VictoryPortal>
-                                        <VictoryScatter
-                                            style={{ data: { fill: 'none' } }}
-                                        />
-                                    </VictoryPortal>
-                                </VictoryGroup>
-
-                            </VictoryStack>
-
-                            <VictoryAxis   dependentAxis crossAxis 
-                                style={
-                                    {
-                                        axis: {
-                                            stroke: 'red',
-                                            fill: "red",
-                                            strokeWidth: 0
-                                        },
-                                        // data: { fill: 'lightblue', stroke: 'black' },
-                                        ticks: {
-                                            size: 15,
-                                            stroke: 'black',
-                                            strokeOpacity: 0.2,
-                                            strokeDasharray: '5, 5',
-                                        },
-                                        grid: {
-                                            stroke: 'rgba(0, 0, 0, 0.2)',
-                                            strokeWidth: 1,
-                                            strokeDasharray: '5, 5',
-                                        },
-                                        axisLabels: {
-                                            fontSize: '9px',
-                                            fontFamily: 'inherit',
-                                            fillOpacity: 1,
-                                            marginLeft: 10,
-                                            padding: 0
-                                        },
-                                        axisLabel: {
-                                            fontsize: 13
-                                        }
-                                    }
-                                }
-
-                            />
-                            <VictoryAxis 
-                            style={
-                                {
-                                    axis: {
-                                        stroke: 'red',
-                                        fill: "red",
-                                        strokeWidth: 0
-                                    },
-                                    // data: { fill: 'lightblue', stroke: 'black' },
-                                
-                                }
-                            }
-                         
-                            />
-                        </VictoryChart>
-                    </div>
-                </div>
+    <div className="p-[24px]">
+      <div className=" flex justify-between items-center flex-wrap ">
+        <div>
+          <p className="text-[15px] font-extrabold text-[#131316]">
+            Top Referral Sources
+          </p>
+        </div>
+        <button>
+          <p className="text-[13px] text-[#FF5403] font-bold">
+            {" "}
+            View full reports
+          </p>
+        </button>
+      </div>
+      <div className="flex justify-between items-center mt-[52px]">
+        <div className="flex flex-col items-start gap-[20px]">
+          <div className="flex items-center gap-[8px]">
+            {/* <div className="w-[21px] h-[15px] flex justify-center items-center rounded-[3px]">
+              <img
+                src="https://res.cloudinary.com/dvikxcdh3/image/upload/v1682326658/main%20stack/Vector_przdx8.png"
+                alt=""
+                className="w-[21px] h-[15px] flex justify-center items-center rounded-[3px]"
+              />
+            </div> */}
+            <div className="flex items-center gap-[12px] text-[14px]">
+              {/* <p>
+                { location? (location.top_locations[0] ?? '').country : 'Nigeria' }
+              </p>
+              <p className="font-bold">{ location? (location.top_locations[0] ?? 20)?.percent : 20 } %</p> */}
+              <p>Google</p>
+              <p className="font-bold">25%</p>
+              <div className="w-[12px] h-[12px] rounded-full bg-[#599EEA]"></div>
             </div>
+          </div>
+
+          <div className="flex items-center gap-[8px]">
+            {/* <div className="w-[21px] h-[15px] flex justify-center items-center rounded-[3px]">
+              <img
+                src="https://res.cloudinary.com/dvikxcdh3/image/upload/v1682441513/main%20stack/Country_United_States_of_America_Style_Flag_Radius_On_msk1ne.jpg"
+                alt=""
+                className="w-[21px] h-[15px] flex justify-center items-center rounded-[3px]"
+              />
+            </div> */}
+            <div className="flex items-center gap-[12px] text-[14px]">
+              {/* <p>{ location? (location.top_locations[0] ?? '').country : 'Nigeria' }</p>
+              <p className="font-bold">{ location? (location.top_locations[0] ?? 20)?.percent : 20 }%</p> */}
+              <p>Instagram</p>
+              <p className="font-bold">34%</p>
+              <div className="w-[12px] h-[12px] rounded-full bg-[#844FF6]"></div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-[8px]">
+            {/* <div className="w-[21px] h-[15px] flex justify-center items-center rounded-[3px]">
+              <img
+                src="https://res.cloudinary.com/dvikxcdh3/image/upload/v1682326656/main%20stack/Country_Netherlands_Style_Flag_Radius_On_ms90iz.png"
+                alt=""
+                className="w-[21px] h-[15px] flex justify-center items-center rounded-[3px]"
+              />
+            </div> */}
+            <div className="flex items-center gap-[12px] text-[14px]">
+              {/* <p>{ location? (location.top_locations[0] ?? '').country : 'Nigeria' }</p>
+              <p className="font-bold">{ location? (location.top_locations[0] ?? 20)?.percent : 20 }%</p> */}
+              <p>Facebook</p>
+              <p className="font-bold">20%</p>
+              <div className="w-[12px] h-[12px] rounded-full bg-[#0FB77A]"></div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-[8px]">
+            {/* <div className="w-[21px] h-[15px] flex justify-center items-center rounded-[3px]">
+              <img
+                src="https://res.cloudinary.com/dvikxcdh3/image/upload/v1682326656/main%20stack/Country_Andorra_Style_Flag_Radius_On_mk2r6x.png"
+                alt=""
+                className="w-[21px] h-[15px] flex justify-center items-center rounded-[3px]"
+              />
+            </div> */}
+            <div className="flex items-center gap-[12px] text-[14px]">
+              {/* <p>{ location? (location.top_locations[0] ?? '').country : 'Nigeria' }</p>
+              <p className="font-bold">{ location? (location.top_locations[0] ?? 20)?.percent : 20 }%</p> */}
+              <p>LinkedIn</p>
+              <p className="font-bold">21%</p>
+              <div className="w-[12px] h-[12px] rounded-full bg-[#FAB70A]"></div>
+            </div>
+          </div>
+        </div>
+        <div className="w-[160px]">
+          <Doughnut
+            data={{
+              datasets: [
+                {
+                  data: [50, 68, 40, 41],
+                  backgroundColor: [
+                    "#599EEA",
+                    "#844FF6",
+                    "#0FB77A",
+                    "#FAB70A",
+                    "#F09468",
+                  ],
+                  // cutoutPercentage: 80,
+                  // borderWidth: [0, 0, 0, 0, 0],
+                },
+              ],
+            }}
+          />
+        </div>
+      </div>
+    </div>
   );
 };
-
-
-
-

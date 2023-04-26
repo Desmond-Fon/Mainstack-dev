@@ -21,7 +21,6 @@
 //     Filler
 //   );
 
-  
 //   const data = {
 //     labels: [
 //       "10am",
@@ -62,8 +61,6 @@
 //     },
 //   };
 
-  
-
 // export const LineGraph = () => {
 //   // const { chartData, setChartData } = useContext(DataContext);
 
@@ -82,12 +79,8 @@
 //             <Line data={data} options={options} />
 //     </> );
 // }
- 
+
 // // export default LineGraph;
-
-
-
-
 
 // // import {AreaChart} from "@d3/area-chart"
 
@@ -102,121 +95,124 @@
 
 // // aapl = FileAttachment("aapl.csv").csv({typed: true})
 
-
-
 // import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 // import { Doughnut } from "react-chartjs-2";
 
 // ChartJS.register(ArcElement, Tooltip, Legend);
-import { VictoryChart, VictoryStack, VictoryGroup, VictoryArea, VictoryPortal, VictoryScatter, VictoryAxis } from 'victory';
+import {
+  VictoryChart,
+  VictoryStack,
+  VictoryGroup,
+  VictoryArea,
+  VictoryPortal,
+  VictoryScatter,
+  VictoryAxis,
+} from "victory";
 
 export const LineGraph = () => {
-//   const data = {
-//     datasets: [
-//       {
-//         data: [60, 20, 50],
-//         backgroundColor: ["#FD7F0B", "#5D5FEF", "#242636"],
-//         cutoutPercentage: 80,
-//         borderWidth: [0, 0, 0],
-//       },
-//     ],
-//   };
+  //   const data = {
+  //     datasets: [
+  //       {
+  //         data: [60, 20, 50],
+  //         backgroundColor: ["#FD7F0B", "#5D5FEF", "#242636"],
+  //         cutoutPercentage: 80,
+  //         borderWidth: [0, 0, 0],
+  //       },
+  //     ],
+  //   };
   return (
-<div>                
-                <div className="chart-areea">
-                    <div className="victory-chart">
-                        <svg style={{ height: 0 }}>
-                            <defs>
-                                <linearGradient id="myGradient">
-                                    <stop offset="0%" stopColor="rgba(255, 84, 3, 0.2)" />
-                                    <stop offset="100%" stopColor="rgba(255, 84, 3, 0)" />
-                                    {/* <stop offset="50%" stopColor="gold" />
+    <div>
+      <div className="chart-areea">
+        <div className="victory-chart">
+          <svg style={{ height: 0 }}>
+            <defs>
+              <linearGradient id="myGradient">
+                <stop offset="0%" stopColor="rgba(255, 84, 3, 0.2)" />
+                <stop offset="100%" stopColor="rgba(255, 84, 3, 0)" />
+                {/* <stop offset="50%" stopColor="gold" />
                                     <stop offset="75%" stopColor="yellow" />
                                     <stop offset="100%" stopColor="green" /> */}
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                        <VictoryChart
-                            scale={{ x: "time" }} width={750} height={320}>
-                            <VictoryStack colorScale={["#005aff50"]}>
-                                <VictoryGroup
-                                    data={[
-                                        { x: new Date(1986, 1, 1), y: 0 },
-                                        { x: new Date(1996, 1, 1), y: 4 },
-                                        { x: new Date(2006, 1, 1), y: 1 },
-                                        { x: new Date(2016, 1, 1), y: 0 }
-                                    ]}
-                                >
-                                    <VictoryArea
-                                        style={{
-                                            data: { fill: "url(#myGradient)", stroke: '#FF5403', strokeWidth: 2 }
-                                        }}
-                                        // interpolation="natural"
-                                    />
-                                    <VictoryPortal>
-                                        <VictoryScatter
-                                            style={{ data: { fill: 'none' } }}
-                                        />
-                                    </VictoryPortal>
-                                </VictoryGroup>
+              </linearGradient>
+            </defs>
+          </svg>
+          <VictoryChart scale={{ x: "time" }} width={750} height={320}>
+            <VictoryStack colorScale={["#005aff50"]}>
+              <VictoryGroup
+                data={[
+                  { x: new Date(2022, 7, 31), y: 1 },
+                  { x: new Date(2022, 8, 1), y: 3 },
+                  { x: new Date(2022, 8, 2), y: 3 },
+                  { x: new Date(2022, 8, 3), y: 7 },
+                  { x: new Date(2022, 8, 4), y: 8 },
+                  { x: new Date(2022, 8, 5), y: 5 },
+                  { x: new Date(2022, 8, 6), y: 20 },
+                  { x: new Date(2022, 8, 7), y: 50 },
+                  { x: new Date(2022, 8, 8), y: 100 },
+                  { x: new Date(2022, 8, 9), y: 2 },
+                ]}
+              >
+                <VictoryArea
+                  style={{
+                    data: {
+                      fill: "url(#myGradient)",
+                      stroke: "#FF5403",
+                      strokeWidth: 2,
+                    },
+                  }}
+                  // interpolation="natural"
+                />
+                <VictoryPortal>
+                  <VictoryScatter style={{ data: { fill: "none" } }} />
+                </VictoryPortal>
+              </VictoryGroup>
+            </VictoryStack>
 
-                            </VictoryStack>
-
-                            <VictoryAxis   dependentAxis crossAxis 
-                                style={
-                                    {
-                                        axis: {
-                                            stroke: 'red',
-                                            fill: "red",
-                                            strokeWidth: 0
-                                        },
-                                        // data: { fill: 'lightblue', stroke: 'black' },
-                                        ticks: {
-                                            size: 15,
-                                            stroke: 'black',
-                                            strokeOpacity: 0.2,
-                                            strokeDasharray: '5, 5',
-                                        },
-                                        grid: {
-                                            stroke: 'rgba(0, 0, 0, 0.2)',
-                                            strokeWidth: 1,
-                                            strokeDasharray: '5, 5',
-                                        },
-                                        axisLabels: {
-                                            fontSize: '9px',
-                                            fontFamily: 'inherit',
-                                            fillOpacity: 1,
-                                            marginLeft: 10,
-                                            padding: 0
-                                        },
-                                        axisLabel: {
-                                            fontsize: 13
-                                        }
-                                    }
-                                }
-
-                            />
-                            <VictoryAxis 
-                            style={
-                                {
-                                    axis: {
-                                        stroke: 'red',
-                                        fill: "red",
-                                        strokeWidth: 0
-                                    },
-                                    // data: { fill: 'lightblue', stroke: 'black' },
-                                
-                                }
-                            }
-                         
-                            />
-                        </VictoryChart>
-                    </div>
-                </div>
-            </div>
+            <VictoryAxis
+              dependentAxis
+              crossAxis
+              style={{
+                axis: {
+                  stroke: "red",
+                  fill: "red",
+                  strokeWidth: 0,
+                },
+                // data: { fill: 'lightblue', stroke: 'black' },
+                ticks: {
+                  size: 15,
+                  stroke: "black",
+                  strokeOpacity: 0.2,
+                  strokeDasharray: "5, 5",
+                },
+                grid: {
+                  stroke: "rgba(0, 0, 0, 0.2)",
+                  strokeWidth: 1,
+                  strokeDasharray: "5, 5",
+                },
+                axisLabels: {
+                  fontSize: "9px",
+                  fontFamily: "inherit",
+                  fillOpacity: 1,
+                  marginLeft: 10,
+                  padding: 0,
+                },
+                axisLabel: {
+                  fontsize: 13,
+                },
+              }}
+            />
+            <VictoryAxis
+              style={{
+                axis: {
+                  stroke: "red",
+                  fill: "red",
+                  strokeWidth: 0,
+                },
+                // data: { fill: 'lightblue', stroke: 'black' },
+              }}
+            />
+          </VictoryChart>
+        </div>
+      </div>
+    </div>
   );
 };
-
-
-
-

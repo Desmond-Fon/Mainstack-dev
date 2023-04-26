@@ -1,23 +1,23 @@
 import { LineGraph } from "./LineGraph";
 import { LocationPie } from "./LocationPie";
 import { ReferralPie } from "./ReferralPie";
-  import axios from "axios";
-  import { useEffect, useContext } from "react";
-  import { DataContext } from "../context/data";
+// import axios from "axios";
+// import { useEffect, useContext } from "react";
+// import { DataContext } from "../context/data";
 
 export const Content = () => {
-  const { chartData, setChartData } = useContext(DataContext);
+  //   const { chartData, setChartData } = useContext(DataContext);
 
- useEffect(() => {
-    axios
-      .get('https://fe-task-api.mainstack.io/')
-      .then((response) => {
-        console.log(response);
-        setChartData(response.data);
-      });
-  }, [setChartData]);
+  //  useEffect(() => {
+  //     axios
+  //       .get('https://fe-task-api.mainstack.io/')
+  //       .then((response) => {
+  //         console.log(response);
+  //         setChartData(response.data);
+  //       });
+  //   }, [setChartData]);
 
-  console.log(chartData);
+  //   console.log(chartData);
 
   return (
     <div className="px-[60px] pb-[160px]">
@@ -61,27 +61,31 @@ export const Content = () => {
       <div className="h-[576px] border-[1.8px] border-[#EFF1F6] rounded-[12px] mb-[24px] pt-[32px] px-[24px] flex justify-between flex-col">
         {/* <div className=" flex justify-between flex-col"> */}
         <div className="h-[30%]">
-        <div className="flex justify-between items-center flex-wrap ">
-          <p className="text-[16px] text-[#131316] font-bold">Page Views</p>
-          <div className="w-[20px] h-[20px] flex justify-center items-center">
-            <img
-              src="https://res.cloudinary.com/dvikxcdh3/image/upload/v1682339006/main%20stack/info_crriso.png"
-              alt=""
-            />
+          <div className="flex justify-between items-center flex-wrap ">
+            <p className="text-[16px] text-[#131316] font-bold">Page Views</p>
+            <div className="w-[20px] h-[20px] flex justify-center items-center">
+              <img
+                src="https://res.cloudinary.com/dvikxcdh3/image/upload/v1682339006/main%20stack/info_crriso.png"
+                alt=""
+              />
+            </div>
           </div>
-        </div>
-        <p className="mt-[8px] text-[13px] mb-[24px]">All time</p>
-        <p className="mb-[42px] text-[#131316] text-[54px] font-bold">500</p>
+          <p className="mt-[8px] text-[13px] mb-[24px]">All time</p>
+          <p className="mb-[42px] text-[#131316] text-[54px] font-bold">500</p>
         </div>
         <div className="h-[70%] w-full">
-        <LineGraph />
+          <LineGraph />
         </div>
         {/* </div> */}
       </div>
 
       <div className="h-[326px] flex justify-between items-center gap-[16px] flex-wrap">
-        <div className="w-[48%] h-full border-[1.8px] border-[#EFF1F6] rounded-[12px] mb-[224px]"><LocationPie /></div>
-        <div className="w-[48%] h-full border-[1.8px] border-[#EFF1F6] rounded-[12px] mb-[224px]"><ReferralPie /></div>
+        <div className="w-[48%] h-full border-[1.8px] border-[#EFF1F6] rounded-[12px] mb-[224px]">
+          <LocationPie />
+        </div>
+        <div className="w-[48%] h-full border-[1.8px] border-[#EFF1F6] rounded-[12px] mb-[224px]">
+          <ReferralPie />
+        </div>
       </div>
     </div>
   );
